@@ -5,7 +5,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator teste {
+generator erd {
   provider = "prisma-erd-generator"
 }
 

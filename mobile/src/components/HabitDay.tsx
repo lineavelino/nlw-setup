@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import dayjs from "dayjs";
 import {
   Dimensions,
   TouchableOpacity,
@@ -34,6 +35,9 @@ export function HabitDay({
         )
       : 0;
 
+  const today = dayjs().startOf("day").toDate();
+  const isCurrentDay = dayjs(date).isSame(today);
+
   return (
     <TouchableOpacity
       className={clsx("rounded-lg border-2 m-1", {
@@ -53,6 +57,7 @@ export function HabitDay({
           amountAccomplishedPercentage < 80,
         ["bg-violet-500 border-violet-400"]:
           amountAccomplishedPercentage > 80,
+        ["border-white border-4"]: isCurrentDay,
       })}
       style={{ width: DAY_SIZE, height: DAY_SIZE }}
       activeOpacity={0.7}
